@@ -64,9 +64,32 @@ int roll_dice(void)
 bool play_game(void)
 {
     int point = roll_dice();
+    if (point == 7 || point == 11)
+    {
+        printf("You win!\n");
+        return true;
+    }
+    if (point == 2 || point == 3 || point == 12)
+    {
+        printf("You lose!\n");
+        return false;
+    }
+
     printf("Your point is: %d\n", point);
 
-    return true;
+    int roll = 0;
+    while (roll != 7)
+    {
+        roll = roll_dice();
+        if (roll == point)
+        {
+            printf("You win!\n");
+            return true;
+        }
+    }
+
+    printf("You lose!\n");
+    return false;
 }
 
 int main(void)
@@ -84,8 +107,8 @@ int main(void)
             loss++;
 
         printf("Play again? ");
-        scanf("%c", &input);
-        if (input != 'y' || input != 'Y')
+        scanf(" %c", &input);
+        if (input != 'y' && input != 'Y')
             break;
     }
 
