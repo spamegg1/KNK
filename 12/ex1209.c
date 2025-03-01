@@ -8,10 +8,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-double inner_product(const double *a, const double *b, int n);
+double inner_product(const double *a, const double *b, int n)
+{
+    double sum = 0.0;
+    int i = 0;
+    while (i < n)
+    {
+        sum += *a * *b;
+        a++;
+        b++;
+        i++;
+    }
+    return sum;
+}
 
 int main(void)
 {
+    const double a[] = {1.2, 3.4};
+    const double b[] = {5.6, 7.8};
+    int n = 2;
+    printf("%lf\n", inner_product(a, b, n)); // 33.24
 
     return EXIT_SUCCESS;
 }

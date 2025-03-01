@@ -19,8 +19,21 @@ void store_zeros(int a[], int n)
         a[i] = 0;
 }
 
+void store_zeros_rewrite(int a[], int n)
+{
+    int *p;
+    for (p = a; p < a + n; p++)
+        *p = 0;
+}
+
 int main(void)
 {
+    int a[5] = {1, 2, 3, 4, 5};
+    int n = 5;
+    store_zeros_rewrite(a, n);
+    for (int i = 0; i < n; i++)
+        printf("%d ", a[i]);
+    printf("\n");
 
     return EXIT_SUCCESS;
 }

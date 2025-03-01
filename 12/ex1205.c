@@ -14,13 +14,13 @@
 
 int main(void)
 {
-    int a[] = {0, 1, 2, 3, 4};
+    int a[5] = {0, 1, 2, 3, 4};
     int *p;
     p = a;
-    printf("%d\n", p == a[0]);    // (a) p == a[0]
-    printf("%d\n", p == &a[0]);   // (b) p == &a[0]
-    printf("%d\n", *p == a[0]);   // (c) *p == a[0]
-    printf("%d\n", p[0] == a[0]); // (d) p[0] == a[0]
+    printf("%d\n", p == a[0]);    // (a) ptr and int, false
+    printf("%d\n", p == &a[0]);   // (b) ptr and ptr, true
+    printf("%d\n", *p == a[0]);   // (c) int and int, true
+    printf("%d\n", p[0] == a[0]); // (d) int and int, true
 
     return EXIT_SUCCESS;
 }

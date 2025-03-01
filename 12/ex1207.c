@@ -10,10 +10,23 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-bool search(const int a[], int n, int key);
+bool search(const int a[], int n, int key)
+{
+    const int *p;
+    for (p = a; p < a + n; p++)
+    {
+        if (*p == key)
+            return true;
+    }
+    return false;
+}
 
 int main(void)
 {
+    int n = 5;
+    const int a[] = {1, 2, 3, 4, 5};
+    int key = 4;
+    printf("%d\n", search(a, n, key));
 
     return EXIT_SUCCESS;
 }

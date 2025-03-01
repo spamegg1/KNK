@@ -23,8 +23,26 @@ int sum_array(const int a[], int n)
     return sum;
 }
 
+int sum_array_rewrite(const int a[], int n)
+{
+    int sum;
+    sum = 0;
+    const int *p;
+    p = a;
+
+    while (p < a + n)
+    {
+        sum += *p;
+        p++;
+    }
+
+    return sum;
+}
+
 int main(void)
 {
-
+    int n = 5;
+    const int a[5] = {4, 1, -6, 3, 2};
+    printf("%d\n", sum_array_rewrite(a, n)); // 4
     return EXIT_SUCCESS;
 }

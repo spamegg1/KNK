@@ -10,12 +10,23 @@
 
 int main(void)
 {
-    int array[] = {0, 1, 2, 3, 4};
-    int *high, *low, *middle;
-    *high = array[0];
-    *low = array[1];
+    int array[5] = {0, 1, 2, 3, 4};
+    int *high, *low;
+    high = array + 4;
+    low = array;
+    printf("high %d low %d\n", *high, *low); // 4 0
 
+    // error: invalid operands to binary expression ('int *' and 'int *')
+    int *middle;
     // middle = (low + high) / 2;
+
+    // The statement is illegal because pointers cannot be added.
+    // Here's a legal statement that has the desired effect:
+    middle = (high - low) / 2 + low; // OK
+    printf("middle: %d\n", *middle); // mid 2
+
+    // The value of (high - low) / 2 is an integer, not a pointer,
+    // so it can legally be added to low.
 
     return EXIT_SUCCESS;
 }
