@@ -13,9 +13,37 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h> /* isalpha, toupper */
+
+#define MAX_LEN 100
 
 int main(void)
 {
+    char message[MAX_LEN];
+    char ch;
+    char *p = message;
+    char *q;
 
+    printf("Enter a message: ");
+    while ((ch = toupper(getchar())) != '\n' && p < message + MAX_LEN)
+    {
+        if (isalpha(ch))
+        {
+            *p = ch;
+            p++;
+        }
+    }
+    p--;
+
+    for (q = message; q < p; q++, p--)
+    {
+        if (*p != *q)
+        {
+            printf("Not a palindrome\n");
+            return EXIT_SUCCESS;
+        }
+    }
+
+    printf("Is a palindrome\n");
     return EXIT_SUCCESS;
 }

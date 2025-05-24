@@ -11,8 +11,55 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define MAXLEN 100
+
+// (a)
+void print_reverse()
+{
+    char msg[MAXLEN];
+    char c;
+    int i = 0;
+
+    printf("Enter a message: ");
+    while ((c = getchar()) != '\n' && i < MAXLEN)
+    {
+        msg[i] = c;
+        i++;
+    }
+
+    printf("Reversal is: ");
+    for (int j = i - 1; j >= 0; j--)
+        putchar(msg[j]);
+    printf("\n");
+}
+
+// (b)
+void print_reverse_ptr()
+{
+    char msg[MAXLEN];
+    char c;
+    char *p = msg;
+
+    printf("Enter a message: ");
+    while ((c = getchar()) != '\n' && p < msg + MAXLEN)
+    {
+        *p = c;
+        p++;
+    }
+
+    printf("Reversal is: ");
+    while (p >= msg)
+    {
+        putchar(*p);
+        p--;
+    }
+    printf("\n");
+}
+
 int main(void)
 {
+    // print_reverse();
+    print_reverse_ptr();
 
     return EXIT_SUCCESS;
 }

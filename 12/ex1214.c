@@ -8,10 +8,23 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+
+bool search(const int a[], int n, int key)
+{
+    const int *p;
+    for (p = a; p < a + n; p++)
+    {
+        if (*p == key)
+            return true;
+    }
+    return false;
+}
 
 int main(void)
 {
-    int temperatures[7][24];
-
+    int temperatures[7][24] = {{32}};
+    bool has32 = search(temperatures[0], 7 * 24, 32);
+    printf("%b\n", has32);
     return EXIT_SUCCESS;
 }
