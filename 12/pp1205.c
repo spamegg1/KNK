@@ -24,40 +24,56 @@ int main(void)
     char c = 0;
     char terminating = 0;
     char sentence[SIZE] = {0};
+    char *p = sentence; // new
+    char *q;
 
     printf("Enter a sentence: ");
 
-    int i = 0;
-    while ((c = getchar()) != '\n')
+    // int i = 0;
+    while ((c = getchar()) != '\n' && p < sentence + SIZE)
     {
         if (c == '.' || c == '?' || c == '!')
         {
             terminating = c;
             break;
         }
-        sentence[i] = c;
-        i++;
+        // sentence[i] = c;
+        *p = c; // new
+        // i++;
+        p++; // new
     }
 
     printf("Reversal of sentence: ");
 
-    while (0 <= i)
+    while (p >= sentence) // (0 <= i) // new
     {
-        int j = i + 1; // the end index of word
+        do
+        {
+            p--;
+        } while (*p != ' ' && p != sentence);
 
-        while (sentence[i] != ' ' && 0 <= i)
-            i--; // go to beginning of word
+        q = p == sentence ? sentence : p + 1;
+        // int j = i + 1; // the end index of word
+
+        while (*q != ' ' && *q != '\0') // (sentence[i] != ' ' && 0 <= i) // new
+        {
+            // i--; // go to beginning of word
+            putchar(*q); // new
+            q++; // new
+        }
+        if (p >= sentence)
+            putchar(' ');
 
         // word is between i and j: O = word, X = not the word
         //  | i |i+1|...|j-1| j |
         //  | X | O |...| O | X |
-        for (int k = i + 1; k < j; k++)
-            putchar(sentence[k]);
+        // for (int k = i + 1; k < j; k++)
+            // putchar(sentence[k]);
 
-        if (0 <= i)
-            putchar(' ');
+        // if (0 <= i)
+            // putchar(' ');
 
-        i--; // go back past the space character.
+        // i--; // go back past the space character.
     }
 
     putchar(terminating);
