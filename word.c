@@ -10,6 +10,7 @@
 /* word.c (Chapter 15, page 363) */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "word.h"
 
 int read_char(void)
