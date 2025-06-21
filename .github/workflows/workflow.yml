@@ -17,5 +17,5 @@ jobs:
       run: |
         find . -type f -name "*.c" | while read -r file; do
           echo "Compiling $file"
-          gcc -c $file.c -lm
+          gcc -c $file -lm
         done
