@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v4.2.2
 
     - name: Compile C Files
       run: |
         find . -type f -name "*.c" | while read -r file; do
           echo "Compiling $file"
-          gcc -I. -o $(basename "$file" .c) "$file" -lm
+          gcc -o $(basename "$file" .c) "$file" -I. -lm
         done
