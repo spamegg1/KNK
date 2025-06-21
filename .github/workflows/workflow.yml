@@ -1,0 +1,21 @@
+name: Compile C Files
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Compile C Files
+      run: |
+        find . -type f -name "*.c" | while read -r file; do
+          echo "Compiling $file"
+          gcc -o $(basename "$file" .c) "$file"
+        done
